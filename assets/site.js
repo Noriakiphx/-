@@ -59,10 +59,11 @@ function renderProfile(){
   if(!storageAvailable)$('#storage-notice').textContent='ブラウザの保存領域が利用できません。入力内容はこの画面のみで保持されます。';
 }
 function route(){
-  const hash=location.hash.slice(1)||'discover';currentView=['discover','saved','messages','profile'].includes(hash)?hash:'discover';
+  const hash=location.hash.slice(1)||'discover';currentView=['discover','saved','messages','profile','billing'].includes(hash)?hash:'discover';
   document.querySelectorAll('[data-nav]').forEach(a=>{const active=a.dataset.nav===currentView;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   $('#discover-view').hidden=!['discover','saved'].includes(currentView);$('#messages-view').hidden=currentView!=='messages';$('#profile-view').hidden=currentView!=='profile';
-  $('#page-crumb').textContent={discover:'DISCOVER',saved:'SAVED',messages:'MESSAGES',profile:'PROFILE'}[currentView];
+  $('#billing-view').hidden=currentView!=='billing';
+  $('#page-crumb').textContent={discover:'DISCOVER',saved:'SAVED',messages:'MESSAGES',profile:'PROFILE',billing:'PAYMENTS'}[currentView];
   renderCrew();if(currentView==='messages')renderMessages();if(currentView==='profile')renderProfile();refreshIcons();
 }
 document.addEventListener('click',event=>{

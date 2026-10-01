@@ -9,8 +9,10 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/billing.css">
   <script defer src="assets/lucide.js"></script>
   <script defer src="assets/site.js"></script>
+  <script defer src="assets/billing.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">コンテンツへ移動</a>
@@ -22,6 +24,7 @@
       <a href="#saved" data-nav="saved"><i data-lucide="bookmark"></i><span>気になる人</span><span id="saved-count" class="nav-count">0</span></a>
       <a href="#messages" data-nav="messages"><i data-lucide="messages-square"></i><span>メッセージ</span></a>
       <a href="#profile" data-nav="profile"><i data-lucide="circle-user-round"></i><span>プロフィール</span></a>
+      <a href="#billing" data-nav="billing"><i data-lucide="lock-keyhole"></i><span>料金・お支払い</span></a>
     </nav>
     <div class="sidebar-note"><span class="mini-label">OFF THE STAGE,</span><strong>ON THE SAME<br>WAVELENGTH.</strong><p>現場の先で、つながろう。</p><span class="note-line"></span></div>
     <div class="sidebar-bottom"><span class="demo-dot"></span><span>UIプレビュー / デモデータ</span></div>
@@ -40,11 +43,35 @@
       </section>
       <section id="messages-view" class="view" hidden><div class="page-heading"><div><p class="eyebrow">KEEP THE CONVERSATION GOING</p><h1>メッセージ</h1><p class="intro">この画面の会話はデモです。相手への送信は行われません。</p></div></div><div class="message-layout"><div class="conversation-list" id="conversation-list"></div><section class="thread"><header id="thread-header"></header><div id="thread-messages" class="thread-messages" aria-live="polite"></div><form id="message-form"><label for="message-input" class="visually-hidden">デモメッセージ</label><textarea id="message-input" placeholder="メッセージを入力" rows="2" maxlength="1000" required></textarea><button class="primary-button" type="submit" aria-label="デモメッセージを追加"><i data-lucide="send"></i></button></form><p class="thread-footnote">デモ会話はページを更新するとリセットされます。</p></section></div></section>
       <section id="profile-view" class="view" hidden><div class="page-heading"><div><p class="eyebrow">INTRODUCE YOURSELF</p><h1>あなたのプロフィール</h1><p class="intro">入力内容はこの端末のブラウザにのみ保存されます。</p></div></div><div class="profile-layout"><form id="profile-form" class="profile-form"><h2>基本情報</h2><div class="form-grid"><label>表示名<input name="name" maxlength="30" required autocomplete="nickname" placeholder="例：ハル"></label><label>職種<select name="role"><option>音響</option><option>照明</option><option>映像</option><option>舞台</option><option>その他</option></select></label><label>活動エリア<select name="region"><option>東京</option><option>神奈川</option><option>大阪</option><option>その他</option></select></label><label>好きなこと<input name="interests" maxlength="100" placeholder="例：ライブ、カメラ、コーヒー"></label></div><label>自己紹介<textarea name="bio" rows="5" maxlength="500" placeholder="現場での仕事や、休日の過ごし方など"></textarea></label><button class="primary-button" type="submit"><i data-lucide="check"></i>この端末に保存</button><p id="storage-notice" class="form-notice" role="status"></p></form><aside class="profile-preview"><p class="eyebrow">PROFILE PREVIEW</p><span class="profile-monogram">CL</span><h2 id="preview-name">あなた</h2><p id="preview-role">音響 / 東京</p><p id="preview-bio">あなたのことを、少しずつ。</p><div id="preview-interests" class="tags"></div><p class="local-note"><i data-lucide="lock-keyhole"></i>公開・会員登録は行われません</p></aside></div></section>
+      <section id="billing-view" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">MEMBERSHIP & PAYMENTS</p><h1>つながるための、シンプルな料金。</h1><p class="intro">男性は月額制。女性は条件達成で返金する入会時デポジット。</p></div><span class="billing-mode">テスト専用</span></div>
+        <div class="billing-preview-notice"><i data-lucide="lock-keyhole"></i><p>この画面はテスト環境です。実際のお金は請求されません。</p></div>
+        <div class="billing-tabs" role="tablist" aria-label="会員タイプ"><button id="male-tab" role="tab" aria-selected="true" aria-controls="male-plan" data-member-type="male">男性会員</button><button id="female-tab" role="tab" aria-selected="false" aria-controls="female-plan" data-member-type="female" tabindex="-1">女性会員</button></div>
+        <div class="billing-layout">
+          <div>
+            <section id="male-plan" class="plan-panel" role="tabpanel" aria-labelledby="male-tab">
+              <div class="plan-top"><span class="eyebrow">CREW MEMBERSHIP</span><span class="plan-label">1か月プラン</span></div><h2>自分のペースで、出会おう。</h2><p class="plan-price"><strong>2,980</strong><span>円 / 月（税込）</span></p><p class="plan-summary">相互マッチ後のメッセージは月額内で利用できます。</p>
+              <ul class="plan-features"><li><i data-lucide="check"></i>メッセージごとの追加料金なし</li><li><i data-lucide="check"></i>毎月自動更新</li><li><i data-lucide="check"></i>次回更新前に解約可能</li></ul>
+              <button id="subscription-checkout" class="primary-button billing-primary" type="button">テスト決済へ進む<i data-lucide="arrow-right"></i></button><p class="plan-small">初回2,980円、以後1か月ごとに2,980円。更新停止後も契約期間の終了までは利用できます。</p>
+            </section>
+            <section id="female-plan" class="plan-panel" role="tabpanel" aria-labelledby="female-tab" hidden>
+              <div class="plan-top"><span class="eyebrow">REFUNDABLE DEPOSIT</span><span class="plan-label">入会時のみ</span></div><h2>安心して、会話を始めよう。</h2><p class="plan-price"><strong>10,000</strong><span>円 / 預かり金</span></p><p class="plan-summary">一定以上のコミュニケーションを達成すると、預かり金を返金します。</p>
+              <ul class="plan-features"><li><i data-lucide="check"></i>月額料金なし</li><li><i data-lucide="check"></i>外部誘導・ロマンス詐欺などの対策を目的とした制度</li><li><i data-lucide="check"></i>返金条件と手続きは支払い前に確認</li></ul>
+              <div class="policy-notice"><strong>返金条件は設定準備中</strong><p>必要な会話数・期間・違反時の取扱いが確定するまで、デポジットの受付は開始しません。</p></div>
+              <button id="deposit-checkout" class="primary-button billing-primary" type="button" disabled>返金条件の設定後に支払い可能</button><p class="plan-small">返金時は元のお支払い方法に返します。返金条件の達成はシステム側で確認します。</p>
+            </section>
+            <section class="billing-section"><h2>お支払い履歴</h2><div id="billing-history" class="billing-history"><p class="billing-empty">お支払いはまだありません。</p></div></section>
+          </div>
+          <aside class="billing-account"><div class="section-title"><h2>現在のご利用状況</h2><button id="billing-refresh" class="outline-button" type="button">更新</button></div><p id="billing-connection" class="connection-label" role="status">接続を確認しています</p><dl class="billing-facts"><div><dt>会員タイプ</dt><dd id="billing-member-type">男性会員</dd></div><div><dt>契約状態</dt><dd id="billing-status">未契約</dd></div><div><dt>次回更新日</dt><dd id="billing-renewal">—</dd></div></dl><button id="billing-portal" class="outline-button billing-wide" type="button" disabled>支払い方法・解約を管理</button><section id="deposit-status-panel" hidden><h3>デポジット返金状況</h3><dl class="billing-facts"><div><dt>預かり残高</dt><dd id="deposit-balance">0円</dd></div><div><dt>返金条件</dt><dd id="deposit-policy-status">未設定</dd></div><div><dt>コミュニケーション</dt><dd id="deposit-progress">集計前</dd></div><div><dt>返金状態</dt><dd id="deposit-refund-state">対象のお支払いなし</dd></div></dl><button id="deposit-refund" type="button" class="outline-button billing-wide" disabled>返金を申請</button></section><p class="account-footnote">決済後の状態は、決済サービスからの確認が届いてから反映します。</p></aside>
+        </div>
+        <p id="billing-error" class="billing-error" role="alert" hidden></p>
+      </section>
       <footer><span>CREW LINK.</span><span>裏方を、ひとりにしない。</span><span>UI DEMO · 2026</span></footer>
     </main>
   </div>
   <dialog id="preferences-dialog"><form id="preferences-form"><div class="dialog-heading"><div><p class="eyebrow">YOUR PREFERENCES</p><h2>希望条件</h2></div><button type="button" class="icon-button" data-close aria-label="閉じる"><i data-lucide="x"></i></button></div><label>つながりたい目的<select name="purpose"><option value="all">すべての目的</option><option>仲間づくり</option><option>趣味の交流</option><option>恋愛</option></select></label><label>活動エリア<select name="region"><option value="all">すべてのエリア</option><option>東京</option><option>神奈川</option><option>大阪</option></select></label><button type="submit" class="primary-button">条件を適用<i data-lucide="arrow-right"></i></button></form></dialog>
   <dialog id="person-dialog"><div id="person-details"></div></dialog>
+  <dialog id="payment-dialog" aria-labelledby="payment-dialog-title"><form id="payment-confirm-form"><div class="dialog-heading"><div><p class="eyebrow">CONFIRM YOUR PAYMENT</p><h2 id="payment-dialog-title">お支払い内容の確認</h2></div><button type="button" class="icon-button" data-close aria-label="閉じる"><i data-lucide="x"></i></button></div><p id="payment-plan-name"></p><p id="payment-total" class="confirm-price"></p><p id="payment-terms" class="plan-small"></p><label class="billing-consent"><input id="payment-consent" type="checkbox" required><span>金額・更新または返金条件を確認しました（テスト用）。</span></label><button id="payment-confirm-button" type="submit" class="primary-button billing-wide">Stripeのテスト決済画面へ</button><p id="payment-dialog-error" class="billing-error" role="alert" hidden></p></form></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>

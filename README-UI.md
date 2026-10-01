@@ -11,9 +11,10 @@ A Japanese frontend demo for an event-production community. Open `index.html` in
 - Editable personal profile (device-local browser storage; not published)
 - Responsive desktop and mobile navigation
 - Keyboard-accessible dialogs, form labels, and focus styles
+- Test-only subscription and refundable deposit screens (see `PAYMENTS.md` for the Node server and Stripe sandbox setup)
 
-All displayed member names and descriptions are fictional samples. Photos are illustrative, not actual members. No authentication, administrator access, identity verification, registration, or backend is implemented. Do not enter sensitive personal data in this demo.
+All displayed member names and descriptions are fictional samples. Photos are illustrative, not actual members. Production authentication, administrator access, identity verification, and registration are not implemented. The payment backend uses isolated demo sessions and accepts test Stripe credentials only. Do not enter sensitive personal data in this demo.
 
 ## Assets
 
-Illustrative photos: Unsplash. Icons: Lucide, ISC license (see `assets/lucide-LICENSE`). The earlier stylesheet remains untouched; the new frontend uses `assets/site.css` and `assets/site.js` only.
+Illustrative photos: Unsplash. Icons: Lucide, ISC license (see `assets/lucide-LICENSE`). Japanese font: Noto Sans JP (see `assets/noto-sans-jp-LICENSE`). The frontend uses the site and billing stylesheets and scripts in `assets/`.
