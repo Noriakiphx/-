@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CREW LINK。音響・照明・映像・舞台、現場を知る人とつながるコミュニティ。">
+  <meta name="theme-color" content="#181a18">
+  <title>CREW LINK | 現場の先で、つながろう。</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/lucide.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">コンテンツへ移動</a>
+  <aside class="sidebar">
+    <a class="brand" href="#discover"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>CREW LINK<span class="brand-period">.</span></a>
+    <span class="side-label">YOUR BACKSTAGE COMMUNITY</span>
+    <nav aria-label="メインメニュー">
+      <a href="#discover" data-nav="discover"><i data-lucide="compass"></i><span>仲間を探す</span></a>
+      <a href="#saved" data-nav="saved"><i data-lucide="bookmark"></i><span>気になる人</span><span id="saved-count" class="nav-count">0</span></a>
+      <a href="#messages" data-nav="messages"><i data-lucide="messages-square"></i><span>メッセージ</span></a>
+      <a href="#profile" data-nav="profile"><i data-lucide="circle-user-round"></i><span>プロフィール</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="mini-label">OFF THE STAGE,</span><strong>ON THE SAME<br>WAVELENGTH.</strong><p>現場の先で、つながろう。</p><span class="note-line"></span></div>
+    <div class="sidebar-bottom"><span class="demo-dot"></span><span>UIプレビュー / デモデータ</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span class="breadcrumb">COMMUNITY <span>/</span> <span id="page-crumb">DISCOVER</span></span><div class="topbar-right"><span class="preview-label">PREVIEW</span><a href="#profile" class="account-link" aria-label="プロフィールを開く"><span class="avatar-initial">CL</span><span id="account-name">あなた</span><i data-lucide="chevron-down"></i></a></div></header>
+    <main id="main" tabindex="-1">
+      <section id="discover-view" class="view">
+        <div class="page-heading"><div><p class="eyebrow">FIND YOUR PEOPLE</p><h1>同じ現場、違う出会い。</h1><p class="intro">働くリズムも、好きなことも。わかり合える仲間を見つけよう。</p></div><button class="outline-button" id="open-preferences"><i data-lucide="sliders-horizontal"></i>希望条件</button></div>
+        <div class="community-banner"><div class="banner-copy"><span class="mini-label">CREW LINK COMMUNITY</span><h2>「お疲れさま」の先にも、<br>話せる人がいる。</h2><span class="banner-caption">音響 / 照明 / 映像 / 舞台</span></div><img src="assets/backstage.jpg" alt="レコーディングスタジオの音響卓" width="1200" height="800" fetchpriority="high"><span class="banner-stamp">BEHIND THE SCENES.<br>BEYOND THE STAGE.</span></div>
+        <div class="browse-heading"><h2 id="results-heading">クルーを探す <span id="result-count"></span></h2><label class="sort-control">表示順<select id="sort"><option value="recommended">おすすめ</option><option value="name">名前順</option></select></label></div>
+        <div class="search-row"><label class="search-field"><i data-lucide="search"></i><input id="search" type="search" placeholder="名前・趣味・キーワードで検索" aria-label="クルーを検索"></label><label class="region-control"><i data-lucide="map-pin"></i><select id="region" aria-label="エリア"><option value="all">すべてのエリア</option><option>東京</option><option>神奈川</option><option>大阪</option></select></label></div>
+        <div class="filter-row" role="group" aria-label="職種で絞り込み"><button data-role="all" aria-pressed="true">すべて</button><button data-role="音響" aria-pressed="false"><i data-lucide="audio-lines"></i>音響</button><button data-role="照明" aria-pressed="false"><i data-lucide="lightbulb"></i>照明</button><button data-role="映像" aria-pressed="false"><i data-lucide="video"></i>映像</button><button data-role="舞台" aria-pressed="false"><i data-lucide="clapperboard"></i>舞台</button><span class="data-label">掲載プロフィールは架空のサンプルです</span></div>
+        <div id="crew-grid" class="crew-grid"></div>
+        <div id="empty-state" class="empty-state" hidden><i data-lucide="search-x"></i><h2>条件に合うクルーが見つかりません</h2><p>キーワードやエリアを変更してください。</p><button class="outline-button" id="reset-filters">条件をリセット</button></div>
+      </section>
+      <section id="messages-view" class="view" hidden><div class="page-heading"><div><p class="eyebrow">KEEP THE CONVERSATION GOING</p><h1>メッセージ</h1><p class="intro">この画面の会話はデモです。相手への送信は行われません。</p></div></div><div class="message-layout"><div class="conversation-list" id="conversation-list"></div><section class="thread"><header id="thread-header"></header><div id="thread-messages" class="thread-messages" aria-live="polite"></div><form id="message-form"><label for="message-input" class="visually-hidden">デモメッセージ</label><textarea id="message-input" placeholder="メッセージを入力" rows="2" maxlength="1000" required></textarea><button class="primary-button" type="submit" aria-label="デモメッセージを追加"><i data-lucide="send"></i></button></form><p class="thread-footnote">デモ会話はページを更新するとリセットされます。</p></section></div></section>
+      <section id="profile-view" class="view" hidden><div class="page-heading"><div><p class="eyebrow">INTRODUCE YOURSELF</p><h1>あなたのプロフィール</h1><p class="intro">入力内容はこの端末のブラウザにのみ保存されます。</p></div></div><div class="profile-layout"><form id="profile-form" class="profile-form"><h2>基本情報</h2><div class="form-grid"><label>表示名<input name="name" maxlength="30" required autocomplete="nickname" placeholder="例：ハル"></label><label>職種<select name="role"><option>音響</option><option>照明</option><option>映像</option><option>舞台</option><option>その他</option></select></label><label>活動エリア<select name="region"><option>東京</option><option>神奈川</option><option>大阪</option><option>その他</option></select></label><label>好きなこと<input name="interests" maxlength="100" placeholder="例：ライブ、カメラ、コーヒー"></label></div><label>自己紹介<textarea name="bio" rows="5" maxlength="500" placeholder="現場での仕事や、休日の過ごし方など"></textarea></label><button class="primary-button" type="submit"><i data-lucide="check"></i>この端末に保存</button><p id="storage-notice" class="form-notice" role="status"></p></form><aside class="profile-preview"><p class="eyebrow">PROFILE PREVIEW</p><span class="profile-monogram">CL</span><h2 id="preview-name">あなた</h2><p id="preview-role">音響 / 東京</p><p id="preview-bio">あなたのことを、少しずつ。</p><div id="preview-interests" class="tags"></div><p class="local-note"><i data-lucide="lock-keyhole"></i>公開・会員登録は行われません</p></aside></div></section>
+      <footer><span>CREW LINK.</span><span>裏方を、ひとりにしない。</span><span>UI DEMO · 2026</span></footer>
+    </main>
+  </div>
+  <dialog id="preferences-dialog"><form id="preferences-form"><div class="dialog-heading"><div><p class="eyebrow">YOUR PREFERENCES</p><h2>希望条件</h2></div><button type="button" class="icon-button" data-close aria-label="閉じる"><i data-lucide="x"></i></button></div><label>つながりたい目的<select name="purpose"><option value="all">すべての目的</option><option>仲間づくり</option><option>趣味の交流</option><option>恋愛</option></select></label><label>活動エリア<select name="region"><option value="all">すべてのエリア</option><option>東京</option><option>神奈川</option><option>大阪</option></select></label><button type="submit" class="primary-button">条件を適用<i data-lucide="arrow-right"></i></button></form></dialog>
+  <dialog id="person-dialog"><div id="person-details"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
